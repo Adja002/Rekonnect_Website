@@ -1,0 +1,112 @@
+<header class="jumbotron text-center">
+  <div class="overlay" style="background-color: rgba(193, 191, 191, 0.5); padding: 50px">
+      <h1 class="animated fadeInDown">
+          Embark on the extraordinary journey to <strong>Rekonnect</strong> and dive into a world of connections and unforgettable events!
+      </h1>
+      <p class="animated fadeInUp">
+          Whether you're an esteemed alumni or a curious visitor, explore and partake in events crafted by our vibrant alumni community. Fellow alumni, seize the opportunity to sign up today and immerse yourself in collaboration and connection.
+      </p>
+      <% if (user) { %>
+      <a href="/events" class="btn btn-info overlay animated fadeIn">View Events</a>
+      <% } else { %>
+      <a href="/auth/signup" class="btn btn-info overlay animated fadeIn">Login</a>
+      <% } %>
+  </div>
+</header>
+
+<section class="container my-5">
+  <div class="row align-items-center">
+      <div class="col-md-6">
+          <h2 class="animated fadeIn">Join our vibrant network of alumni</h2>
+          <p class="animated fadeIn">
+              Your golden ticket to becoming a part of our lively alumni network awaits! Attend sensational events that span from career development to social gatherings. Be prepared to be inspired and inspire others on this exhilarating journey.
+          </p>
+          <a href="/auth/signup" class="btn btn-primary animated fadeIn">Join</a>
+      </div>
+      <div class="col-md-6">
+          <img src="images/about.jpg" alt="Alumni Network" class="img-fluid" />
+      </div>
+  </div>
+</section>
+
+<section class="bg-light py-5">
+  <div class="container">
+      <h2 class="text-center animated fadeIn">Hear from those who Rekonnect!</h2>
+      <div class="row">
+          <div class="col-md-4 mb-3">
+              <div class="card h-100 shadow-sm">
+                  <img src="images/2.avif" alt="Chulu Kiwa" class="card-img-top" />
+                  <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                          <p>
+                              "Reconnecting with my peers and interacting with people I couldn't talk to during my time at the university has been an unimaginable journey. This platform has opened doors I never thought existed."
+                          </p>
+                          
+                      </blockquote>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <div class="card h-100 shadow-sm">
+                  <img src="images/4.jpg" alt="Naruto Uzu" class="card-img-top" />
+                  <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                          <p>
+                              "Networking with peers led me to discover job opportunities and learn valuable insights from their experiences. Rekonnect has been a game-changer in my professional journey."
+                          </p>
+                      
+                      </blockquote>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4 mb-3">
+              <div class="card h-100 shadow-sm">
+                  <img src="images/3.jpg" alt="Anna Opo" class="card-img-top" />
+                  <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                          <p>
+                              "I find this platform incredibly inspiring, providing a great space to connect, learn, and share experiences with amazing individuals. I absolutely love it here!"
+                          </p>
+                          
+                      </blockquote>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="container my-5">
+  <h2 class="text-center animated fadeIn">Experience Our Diverse Events</h2>
+  <p class="text-center animated fadeInUp mb-4">
+      Explore the diverse categories of events organized by our platform, offering experiences that cater to your interests and aspirations.
+  </p>
+  <div class="row text-center">
+      <div class="col-md-4 mb-3">
+          <div class="card card-body h-100">
+              <h3 class="card-title">Professional Development</h3>
+              <p class="card-text">
+                  Immerse yourself in events that promise to enhance your skills and unveil new horizons. It's more than an event; it's a life-changing experience.
+              </p>
+          </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+          <div class="card card-body h-100">
+              <h3 class="card-title">Networking Opportunities</h3>
+              <p class="card-text">
+                  <strong>Rekonnect</strong> with your peers and fellow alumni to share ideas, explore opportunities, and build connections that last a lifetime.
+              </p>
+          </div>
+      </div>
+
+      <div class="col-md-4 mb-3">
+          <div class="card card-body h-100">
+              <h3 class="card-title">Campus Events</h3>
+              <p class="card-text">
+                  Indulge in events set against the backdrop of our campus facilities. Meet juniors, seniors, and relive the spirit of campus life.
+              </p>
+          </div>
+      </div>
+  </div>
+</section>

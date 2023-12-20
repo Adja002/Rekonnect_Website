@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="event-details">
+        <h2 class="text-center mb-4"><%= event.title %></h2>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="<%= event.image %>" alt="<%= event.title %> Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h3>Event Information</h3>
+                <p><%= event.description %></p>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Date:</strong> <%= new Date(event.date).toLocaleDateString() %></li>
+                    <li class="list-group-item"><strong>Location:</strong> <%= event.location %></li>
+                    <li class="list-group-item"><strong>Category:</strong> <%= event.category %></li>
+                    <li class="list-group-item"><strong>Status:</strong> <%= event.visibility %></li>
+                </ul>
+                <br>
+                <br>
+                <a href="/events/<%= event._id %>/confirm" class="btn btn-info">Confirm attendance</a>
+            </div>
+        </div>
+        
+        <% if (isOrganizer) { %>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3>Attendance List</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Attendance Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% participants.forEach(confirm => { %>
+                                <tr>
+                                    <td><%= confirm.user.firstName %></td>
+                                    <td><%= confirm.user.lastName %></td>
+                                    <td><%= confirm.user.email %></td>
+                                    <td><%= confirm.response %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>

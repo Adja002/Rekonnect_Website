@@ -1,0 +1,41 @@
+<style>
+.card-body .btn-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2px;
+}
+
+.card-body .btn-group button {
+  margin-left: 5px; 
+  background-color: #3498db; 
+  color: #fff; 
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.card-body .btn-group button:hover {
+  background-color: #2980b9; 
+}
+</style>
+
+<div class="col-md-4">
+    <div class="card mb-4 animated fadeInRight">
+        <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text">Date: <%= event.date %></p>
+            <p class="card-text">Location: <%= event.location %></p>
+            <p class="card-text">Description: <%= event.description %></p>
+            <div class="btn-group">
+                <a href="/events/<%= event._id %>" class="btn btn-info">Details</a>
+                <% if (event.isOrganizer) { %>
+                <a href="/events/<%= event._id %>/update" class="btn btn-info">Edit</a>
+                <form class="btn-group" action="/events/<%= event._id %>/delete" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
