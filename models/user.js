@@ -13,9 +13,9 @@ const userSchema = new Schema({
     },
     role: {
         type: String,
-        enum: ['alumni', 'admin'],
+        enum: ['Alumni', 'Admin'],
         required: false,
-        default: 'alumni',
+        default: 'Alumni',
     },
     firstName: {
         type: String,
@@ -33,10 +33,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    profilePicture: {
-        type: String,
-        required: false
-    },    
+ 
 
 });
 

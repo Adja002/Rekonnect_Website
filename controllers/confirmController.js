@@ -8,7 +8,7 @@ exports.createOrUpdateConfirm = async (req, res) => {
     const eventId = req.params.id;
 
     const event = await Event.findById({"_id":eventId});
-    if (!event) return res.status(404).json({ message: "Event has not found" });
+    if (!event) return res.status(404).json({ message: "Event has not been found" });
 
     if (req.method === "GET") {
         const existingConfirm = await Confirm.findOne({ userId: req.session.user.id, eventId: eventId });

@@ -7,10 +7,10 @@ const mongoose = require("mongoose");
 
 exports.getEvents = async (req, res) => {
   const isAuthenticated = req.session.isAuthenticated;
-  const eventsQuery = isAuthenticated ? {} : { visibility: "public" };
+  const eventsQuery = isAuthenticated ? {} : { visibility: "Public" };
 
   const page = parseInt(req.query.page) || 1; 
-  const limit = 10; 
+  const limit = 15; 
   const skip = (page - 1) * limit; 
   const totalEvents = await Event.countDocuments(eventsQuery);
   const totalPages = Math.ceil(totalEvents / limit);
@@ -43,7 +43,7 @@ exports.createOrUpdateEvent = async (req, res) => {
         event = await Event.findById(
           new mongoose.Types.ObjectId(req.body.id)
         );
-        if (!event) return res.status(404).json({ message: "Event not found" });
+        if (!event) return res.status(404).json({ message: "Event has not been found" });
         event.title = req.body.title;
         event.description = req.body.description;
         event.category = req.body.category;
@@ -52,7 +52,7 @@ exports.createOrUpdateEvent = async (req, res) => {
         event.image = req.body.image;
         event.visibility = req.body.visibility;
         await event.save();
-        message = "Event updated successfully";
+        message = "Event has been updated successfully";
         return res.redirect(`/events/${event._id}`);
       }
 
@@ -62,7 +62,7 @@ exports.createOrUpdateEvent = async (req, res) => {
 
       event = new Event(payload);
       await event.save();
-      message = "Event created successfully";
+      message = "Event has been created successfully";
       return res.redirect("/events");
     } catch (error) {
       message = `Failed creating the event ${error.message} ${req.session.user}`;
@@ -91,7 +91,7 @@ exports.getEvent = async (req, res) => {
   const event = await Event.findById(
     new mongoose.Types.ObjectId(req.params.id)
   );
-  if (!event) return res.status(404).json({ message: "Event not found" });
+  if (!event) return res.status(404).json({ message: "Event has not been found" });
 
   let isOrganizer = false;
   let participants = null;

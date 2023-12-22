@@ -14,7 +14,7 @@ function isAuthenticated(req, res, next) {
     if (req.session.isAuthenticated && req.session.user.role === "admin") {
       return next();
     }
-    return res.status(403).send('Access denied');
+    return res.status(403).send('Access has been denied');
   }
   
 function addAuthVariablesToEJS(req, res, next) {

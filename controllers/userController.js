@@ -2,7 +2,6 @@ const User = require("../models/user");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const ejs = require("ejs");
-const send_email = require("../utils/email");
 
 const SALT_ROUNDS = 10;
 
@@ -21,7 +20,7 @@ exports.login = async (req, res) => {
       const user = await User.findOne({ email: email });
 
       if (!user) {
-        message = `Login failed! Check authentication credentials ${email}`;
+        message = `Login has failed! Check your credentials carefully ${email}`;
       }
 
       const passwordMatch = await bcrypt.compare(password, user.password);
@@ -79,7 +78,7 @@ exports.signup = async (req, res) => {
     }
 
     console.error("Registration error:", err);
-    res.status(500).send("An error occurred during registration.");
+    res.status(500).send("An error has occurred during registration.");
   }
 };
 
@@ -112,7 +111,7 @@ exports.createOrUpdateUser = async (req, res) => {
 exports.signupPage = async (req, res) => {
   const years = [
     { value: 2023, label: "2023" },
-    { value: 2022, label: "2022" },
+    { value: 2024, label: "2024" },
   ];
 
   const content = await ejs.renderFile(
@@ -135,7 +134,7 @@ exports.getUser = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
   const page = parseInt(req.query.page) || 1; 
-  const limit = 4; 
+  const limit = 7; 
   const skip = (page - 1) * limit; 
 
   const totalUsers = await User.countDocuments();
@@ -172,12 +171,10 @@ exports.updateUser = async (req, res) => {
         password,
         role,
         firstName,
-        middleName,
         lastName,
         graduationYear,
         major,
         email,
-        profilePicture,
       },
       { new: true }
     );
@@ -202,16 +199,6 @@ exports.deleteUser = async (req, res) => {
 
 exports.logout = (req, res) => {
   req.session.destroy((err) => {
-    if (err) {
-      console.error("An error occured during logout:", err);
-      res
-        .status(500)
-        .send({
-          success: false,
-          message: "An internal server error occured during logout.",
-        });
-      return;
-    }
     res.redirect("/"); 
   });
 };

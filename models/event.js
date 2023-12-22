@@ -38,8 +38,8 @@ const eventSchema = new Schema({
   },
   visibility: {
     type: String,
-    enum: ["public", "private"],
-    default: "public",
+    enum: ["Public", "Private"],
+    default: "Public",
     required: true,
   },
 });
